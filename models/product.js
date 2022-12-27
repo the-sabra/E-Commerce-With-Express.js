@@ -1,10 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-const { threadId } = require('worker_threads');
-const { postDeleteProduct } = require('../controllers/admin');
 const Cart = require('./cart');
-
-const db=require('../util/DB');
 // const p = path.join(
 //   path.dirname(process.mainModule.filename),
 //   'data',

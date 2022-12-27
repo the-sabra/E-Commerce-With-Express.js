@@ -4,6 +4,23 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
         <main>
+            <% if (orders.length<=0) {%>
             <h1>Nothing there!</h1>
+            <% } else {%>
+                 <ul>
+                     <% orders.forEach(order=>{  %>
+                        <h1> <%= order.id%></h1>
+                            <% order.products.forEach(product=> {%>
+                                <li><%=product.title%> (<%=product.orderItem.quantity%>)</li>
+                                 <form action="/order-delete-item" method="post">
+                                     <input type="hidden" name="productId" value="<%=  product.orderItem.productId%>">
+                                     <input type="hidden" name="orderId" value="<%= order.id%>">
+                                     <button class="btn" type="submit">Delete</button>
+                                 </form>
+                            <% }); %>
+
+                     <% });%>
+                 </ul>
+            <% }%>
         </main>
         <%- include('../includes/end.ejs') %>
